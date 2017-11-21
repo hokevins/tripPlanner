@@ -68,6 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 const mapboxgl = __webpack_require__(1);
+var markerFactory = __webpack_require__(3);
 
 mapboxgl.accessToken = "pk.eyJ1IjoiaG9rZXZpbnMiLCJhIjoiY2phOXVpYzVtMGJpZTMzcXRkYmc5emszbiJ9.wFyZiyn0YBk7VBtXwZwckw";
 
@@ -77,6 +78,14 @@ const map = new mapboxgl.Map({
   zoom: 12, // starting zoom
   style: "mapbox://styles/mapbox/streets-v10" // mapbox has lots of different map styles available.
 });
+
+const markerDomEl = document.createElement("div");
+markerDomEl.style.width = "32px";
+markerDomEl.style.height = "39px";
+markerDomEl.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
+new mapboxgl.Marker(markerDomEl).setLngLat([-74.009, 40.705]).addTo(map);
+
+// new mapboxgl.Marker(markerFactory.createRestaurantMark()).setLngLat([-74.009, 40.705]).addTo(map);
 
 
 /***/ }),
@@ -659,5 +668,37 @@ try {
 module.exports = g;
 
 
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+var markerFactory = {
+  createHotelMark: function() {
+    const markerDomEl = document.createElement("div");
+    markerDomEl.style.width = "32px";
+    markerDomEl.style.height = "39px";
+    markerDomEl.style.backgroundImage = "url(http://i.imgur.com/D9574Cu.png)";
+    return markerDomEl;
+  },
+  createActivityMark: function() {
+    const markerDomEl = document.createElement("div");
+    markerDomEl.style.width = "32px";
+    markerDomEl.style.height = "39px";
+    markerDomEl.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
+    return markerDomEl;
+  },
+  createRestaurantMark: function() {
+    const markerDomEl = document.createElement("div");
+    markerDomEl.style.width = "32px";
+    markerDomEl.style.height = "39px";
+    markerDomEl.style.backgroundImage = "url(http://i.imgur.com/cqR6pUI.png)";
+    return markerDomEl;
+  }
+};
+
+module.exports = markerFactory;
+
+
 /***/ })
 /******/ ]);
+//# sourceMappingURL=bundle.js.map
