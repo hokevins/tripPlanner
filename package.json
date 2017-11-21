@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "webpack --watch"
+    "test": "webpack --watch bundle.js",
+    "start": "webpack -w"
   },
   "author": "Kevin Ho & Jimmi Chen",
   "license": "ISC",
   "devDependencies": {
     "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "mapbox-gl": "^0.42.1"
   }
 }
